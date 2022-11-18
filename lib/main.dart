@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gir_hotel_booking/otp_screen.dart';
+import 'package:gir_hotel_booking/signup_screen_2.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const OTPScreen(),
+      home: const SignupScreen2(),
     );
   }
 }
