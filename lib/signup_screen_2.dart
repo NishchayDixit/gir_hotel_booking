@@ -15,7 +15,7 @@ class _SignupScreen2State extends State<SignupScreen2> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/background_2.png'),
+          image: AssetImage('assets/images/background_2.jpeg'),
           fit: BoxFit.cover,
         ),
       ),
