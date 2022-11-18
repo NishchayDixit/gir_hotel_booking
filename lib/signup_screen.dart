@@ -15,7 +15,7 @@ class _SignupScreenState extends State<SignupScreen> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/background.png'),
+          image: AssetImage('assets/images/background.png'),
           fit: BoxFit.cover,
         ),
       ),
@@ -28,7 +28,7 @@ class _SignupScreenState extends State<SignupScreen> {
             // padding: EdgeInsets.only(top:40,bottom: 40),
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/login_background.png'),
+                image: AssetImage('assets/images/signup_card_background.png'),
                 fit: BoxFit.fill,
               ),
             ),
