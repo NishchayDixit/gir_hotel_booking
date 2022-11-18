@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -19,17 +21,16 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       child: SafeArea(
         child: Scaffold(
-
-          resizeToAvoidBottomInset : false,
+          resizeToAvoidBottomInset: false,
           backgroundColor: Colors.transparent,
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: <Widget>[
                 Container(
-                  padding: EdgeInsets.fromLTRB(30, 100, 0, 0),
+                  padding: const EdgeInsets.fromLTRB(30, 100, 0, 0),
                   child: Row(
-                    children: const [
+                    children: const <Widget>[
                       Text(
                         'Enter ',
                         style: TextStyle(
@@ -42,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         'OTP',
                         style: TextStyle(
                           fontSize: 30,
-                          color: Color.fromARGB(255, 29, 188, 134),
+                          color: Color.fromARGB(255, 39, 201, 146),
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -54,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
+                    children: <Widget>[
                       rect_OTP('0'),
                       rect_OTP('0'),
                       rect_OTP('0'),
@@ -65,31 +66,31 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(top: 30),
+                  padding: const EdgeInsets.only(top: 30),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Code has been sent to ",
+                    children: <Widget>[
+                      const Text("Code has been sent to ",
                           style: TextStyle(
                             fontSize: 16,
                           )),
                       Container(
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                           bottom: 0.1,
                         ),
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             border: Border(
                                 bottom: BorderSide(
-                          color: Color.fromARGB(255, 29, 188, 134),
+                          color: Color.fromARGB(255, 39, 201, 146),
                           width:
                               1.0, // This would be the width of the underline
                         ))),
-                        child: Text(
+                        child: const Text(
                           "+91 9898989898",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
-                            color: Color.fromARGB(255, 29, 188, 134),
+                            color: Color.fromARGB(255, 39, 201, 146),
                           ),
                         ),
                       ),
@@ -97,31 +98,25 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(top: 30),
+                  padding: const EdgeInsets.only(top: 30),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                    children: const <Widget>[
                       Text("Resend code in ",
                           style: TextStyle(
                             fontSize: 16,
                           )),
-                      Container(
-                        child: Text(
-                          "45",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: Color.fromARGB(255, 29, 188, 134),
-                          ),
+                      Text(
+                        "45",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          color: Color.fromARGB(255, 29, 188, 134),
                         ),
                       ),
-                      Text("s",
-                          style: TextStyle(
-                            fontSize: 16,
-                          )),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),
@@ -133,10 +128,10 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget rect_OTP(String a) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: Color.fromARGB(255, 29, 188, 134)),
-        borderRadius: BorderRadius.all(Radius.circular(15)),
+        border: Border.all(color: const Color.fromARGB(255, 39, 201, 146)),
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
       ),
-      padding: EdgeInsets.fromLTRB(18, 13, 18, 13),
+      padding: const EdgeInsets.fromLTRB(18, 13, 18, 13),
       child: Text(
         a,
         style: const TextStyle(
