@@ -71,6 +71,7 @@ flutter:
     - assets/icons/icon_notification.png
     - assets/icons/icon_nearby.png
     - assets/icons/icon_filters.png
+    - assets/icons/icon_filter_bg.png
     - assets/images/background.png
     - assets/images/background_2.png
     - assets/images/logo_hotel_booking.png
