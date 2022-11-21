@@ -67,6 +67,7 @@ flutter:
     - assets/icons/icon_email.png
     - assets/icons/icon_calender.png
     - assets/images/background_2.jpeg
+    - assets/images/background_2.png
     - assets/icons/icon_google.png
     - assets/icons/icon_expand_more.png
 

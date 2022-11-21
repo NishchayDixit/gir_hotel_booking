@@ -38,7 +38,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         Text(
                           'Welcome to',
                           style: TextStyle(
-                              fontSize: 32.0, fontWeight: FontWeight.normal),
+                              fontSize: 32.0,
+                              fontWeight: FontWeight.normal,
+                          ),
                           textAlign: TextAlign.start,
                         ),
                       ],
@@ -81,10 +83,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                   fontWeight: FontWeight.w500),
                             ),
                           ),
-                          
                           Expanded(
                             flex: 1,
-                            child: Icon(Icons.keyboard_arrow_down_rounded,size: 22.0),
+                            child: Icon(Icons.keyboard_arrow_down_rounded,
+                                size: 22.0),
                             /*Image(
                               image: AssetImage('assets/icons/icon_expand_more.png'),
                               height: 20,
@@ -154,7 +156,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         onPressed: () {},
                         style: OutlinedButton.styleFrom(
-                          padding:const EdgeInsets.symmetric(horizontal: 22.0, vertical: 12.0),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 22.0, vertical: 12.0),
                           shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(
                               Radius.circular(10),

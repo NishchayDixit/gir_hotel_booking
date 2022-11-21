@@ -15,7 +15,7 @@ class _SignupScreen2State extends State<SignupScreen2> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/background_2.jpeg'),
+          image: AssetImage('assets/images/background_2.png'),
           fit: BoxFit.cover,
         ),
       ),
@@ -147,6 +147,7 @@ class _SignupScreen2State extends State<SignupScreen2> {
               focusedBorder: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                   borderSide: BorderSide(
+                    width: 1.5,
                     color: Color.fromARGB(255, 34, 198, 143),
                   )),
               fillColor: const Color.fromARGB(255, 34, 198, 143),
