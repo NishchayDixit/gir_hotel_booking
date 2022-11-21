@@ -186,21 +186,24 @@ class _HomeScreenState extends State<HomeScreen> {
                             padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
                             children: [
                               getFeaturedPlace(
-                                  place: 'Surat',
-                                  location: 'abc',
+                                  place: 'City Rome',
+                                  location: 'Surat',
                                   price: '10000',
+                                  time: 'Night',
                                   path: 'assets/images/place_1.png',
                                   stars: 5),
                               getFeaturedPlace(
-                                  place: 'Rajkot',
-                                  location: 'abc',
+                                  place: 'Imperial palace',
+                                  location: 'Rajkot',
                                   price: '8000',
+                                  time: 'Day',
                                   path: 'assets/images/place_2.png',
                                   stars: 3.5),
                               getFeaturedPlace(
-                                  place: 'Ahmedabad',
-                                  location: 'abc',
+                                  place: 'Taj hotel',
+                                  location: 'Ahmedabad',
                                   price: '5000',
+                                  time: 'Night',
                                   path: 'assets/images/place_3.png',
                                   stars: 4),
                             ],
@@ -218,7 +221,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget getFeaturedPlace({place, location, price, path, stars}) {
+  Widget getFeaturedPlace({place, location, time, price, path, stars}) {
     return Padding(
       padding: EdgeInsets.fromLTRB(20, 5, 0, 5),
       child: Container(
@@ -247,13 +250,90 @@ class _HomeScreenState extends State<HomeScreen> {
               Expanded(child: Container()),
               Row(
                 children: [
-                  Text(place,style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                    fontSize: 20,
-                  ),),
+                  Text(
+                    place,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                      fontSize: 25,
+                    ),
+                  ),
                 ],
               ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 2.0, 8.0, 0),
+                    child: Icon(
+                      Icons.location_on,
+                      color: Color.fromARGB(255, 34, 198, 143),
+                    ),
+                  ),
+                  Text(
+                    location,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Text(
+                    time,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      color: Colors.white,
+                      fontSize: 15,
+                    ),
+                  ),
+                  Text(
+                    ' / ',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Text(
+                    '₹' + price,
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Expanded(child: Container()),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(8, 4, 12, 4),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(25),
+                      ),
+                      color: Colors.white,
+                    ),
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          'assets/icons/icon_star.png',
+                          width: 25,
+                          height: 25,
+                        ),
+                        Text(
+                          " "+stars.toString(),
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700,
+                            color: Color.fromARGB(255, 34, 198, 143),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),
@@ -287,12 +367,16 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             FittedBox(
               fit: BoxFit.contain,
-              child: Text(
-                title,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400,
-                ),
+              child: Column(
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

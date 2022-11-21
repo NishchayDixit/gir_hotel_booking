@@ -75,6 +75,8 @@ flutter:
     - assets/icons/icon_filters.png
     - assets/icons/icon_filter_bg.png
     - assets/icons/icon_save.png
+    - assets/icons/icon_star.png
+    - assets/icons/icon_back_bg.png
     - assets/images/background.png
     - assets/images/background_2.png
     - assets/images/logo_hotel_booking.png
@@ -99,10 +101,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-SemiBold.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
