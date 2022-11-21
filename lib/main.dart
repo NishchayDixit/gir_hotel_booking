@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gir_hotel_booking/signup_screen.dart';
+import 'package:gir_hotel_booking/home_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
