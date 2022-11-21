@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.all(20),
+                  padding: EdgeInsets.fromLTRB(20, 20, 20, 5),
                   child: Row(
                     children: [
                       Container(
@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.all(20),
+                  padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
                   child: Row(
                     children: [
                       Expanded(
@@ -116,37 +116,100 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Container(
-                    child: Row(
-                  children: [
-                    Expanded(
-                      child: SizedBox(
-                        height: 150,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          addAutomaticKeepAlives: false,
-                          // cacheExtent: 10,
-                          padding: EdgeInsets.all(20),
-                          children: [
-                            getNearByPlace(
-                                'Nearby', 'assets/icons/icon_temp.png'),
-                            getNearByPlace(
-                                'Tower', 'assets/images/random_1.jpg', true),
-                            getNearByPlace(
-                                'Taj Mahal', 'assets/images/random_2.jpg'),
-                            getNearByPlace(
-                                'China', 'assets/images/random_3.webp'),
-                            getNearByPlace(
-                                'Waterfall', 'assets/images/random_4.webp'),
-                            getNearByPlace(
-                                'Iceland', 'assets/images/random_5.jpg'),
-                            getNearByPlace(
-                                'Nidavellir', 'assets/images/random_6.jpg'),
-                          ],
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: SizedBox(
+                          height: 160,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            addAutomaticKeepAlives: false,
+                            // cacheExtent: 10,
+                            padding: EdgeInsets.all(20),
+                            children: [
+                              getNearByPlace(
+                                  title: 'Nearby',
+                                  path: 'assets/icons/icon_temp.png'),
+                              getNearByPlace(
+                                  title: 'Tower',
+                                  path: 'assets/images/random_1.jpg',
+                                  selected: true),
+                              getNearByPlace(
+                                  title: 'Taj Mahal',
+                                  path: 'assets/images/random_2.jpg'),
+                              getNearByPlace(
+                                  title: 'China',
+                                  path: 'assets/images/random_3.webp'),
+                              getNearByPlace(
+                                  title: 'Waterfall',
+                                  path: 'assets/images/random_4.webp'),
+                              getNearByPlace(
+                                  title: 'Iceland',
+                                  path: 'assets/images/random_5.jpg'),
+                              getNearByPlace(
+                                  title: 'Nidavellir',
+                                  path: 'assets/images/random_6.jpg'),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ))
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Featured',
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      Expanded(child: Container()),
+                      Text('Show more'),
+                      Icon(Icons.navigate_next),
+                    ],
+                  ),
+                ),
+                Container(
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: SizedBox(
+                          height: 220,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            addAutomaticKeepAlives: false,
+                            // cacheExtent: 10,
+                            padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                            children: [
+                              getFeaturedPlace(
+                                  place: 'Surat',
+                                  location: 'abc',
+                                  price: '10000',
+                                  path: 'assets/images/place_1.png',
+                                  stars: 5),
+                              getFeaturedPlace(
+                                  place: 'Rajkot',
+                                  location: 'abc',
+                                  price: '8000',
+                                  path: 'assets/images/place_2.png',
+                                  stars: 3.5),
+                              getFeaturedPlace(
+                                  place: 'Ahmedabad',
+                                  location: 'abc',
+                                  price: '5000',
+                                  path: 'assets/images/place_3.png',
+                                  stars: 4),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
@@ -155,7 +218,50 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Container getNearByPlace(title, path, [selected]) {
+  Widget getFeaturedPlace({place, location, price, path, stars}) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(20, 5, 0, 5),
+      child: Container(
+        width: 340,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(path),
+            fit: BoxFit.cover,
+          ),
+          borderRadius: BorderRadius.circular(22),
+        ),
+        child: Container(
+          padding: EdgeInsets.all(12),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Expanded(child: Container()),
+                  Image.asset(
+                    'assets/icons/icon_save.png',
+                    width: 60,
+                    height: 60,
+                  ),
+                ],
+              ),
+              Expanded(child: Container()),
+              Row(
+                children: [
+                  Text(place,style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget getNearByPlace({title, path, selected}) {
     return Container(
       child: SizedBox(
         width: 95,
