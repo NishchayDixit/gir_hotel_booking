@@ -38,7 +38,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         Text(
                           'Welcome to',
                           style: TextStyle(
-                              fontSize: 32.0, fontWeight: FontWeight.normal),
+                              fontSize: 32.0,
+                              fontWeight: FontWeight.normal,
+                          ),
                           textAlign: TextAlign.start,
                         ),
                       ],

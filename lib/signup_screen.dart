@@ -139,7 +139,7 @@ class _SignupScreenState extends State<SignupScreen> {
     return Column(
       children: <Widget>[
         Container(
-          margin: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+          margin: const EdgeInsets.fromLTRB(22, 2.5, 22, 2.5),
           decoration: BoxDecoration(
             color: const Color.fromARGB(255, 250, 250, 250),
             borderRadius: const BorderRadius.all(
@@ -148,6 +148,7 @@ class _SignupScreenState extends State<SignupScreen> {
             border: border != null
                 ? Border.all(
                     color: const Color.fromARGB(255, 34, 198, 143),
+                    width: 1.5,
                   )
                 : null,
           ),
@@ -157,6 +158,7 @@ class _SignupScreenState extends State<SignupScreen> {
               focusedBorder: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                   borderSide: BorderSide(
+                    width: 1.5,
                     color: Color.fromARGB(255, 34, 198, 143),
                   )),
               fillColor: const Color.fromARGB(255, 34, 198, 143),
