@@ -75,6 +75,7 @@ flutter:
     - assets/icons/icon_filters.png
     - assets/icons/icon_filter_bg.png
     - assets/icons/icon_save.png
+    - assets/icons/icon_save_rect_bg.png
     - assets/icons/icon_star.png
     - assets/icons/icon_back_bg.png
     - assets/images/background.png

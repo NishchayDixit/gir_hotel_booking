@@ -27,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       AllNearByPlaces(),
                       AllFeaturedPlaces(),
                       AllRecommendationPlaces(),
+                      AllHotels(),
                     ],
                   ),
                 ),
@@ -55,43 +56,46 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         Container(
-          child: Row(
-            children: [
-              Expanded(
-                child: SizedBox(
-                  height: 250,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    addAutomaticKeepAlives: false,
-                    // cacheExtent: 10,
-                    padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                    children: [
-                      getRecommendationPlace(
-                          place: 'City Rome',
-                          location: 'Surat',
-                          price: '10000',
-                          time: 'Night',
-                          path: 'assets/images/place_1.png',
-                          stars: 5),
-                      getRecommendationPlace(
-                          place: 'Imperial palace',
-                          location: 'Rajkot',
-                          price: '8000',
-                          time: 'Day',
-                          path: 'assets/images/place_2.png',
-                          stars: 3.5),
-                      getRecommendationPlace(
-                          place: 'Taj hotel',
-                          location: 'Ahmedabad',
-                          price: '5000',
-                          time: 'Night',
-                          path: 'assets/images/place_3.png',
-                          stars: 4),
-                    ],
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: Row(
+              children: [
+                Expanded(
+                  child: SizedBox(
+                    height: 250,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      addAutomaticKeepAlives: false,
+                      // cacheExtent: 10,
+                      padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                      children: [
+                        getRecommendationPlace(
+                            place: 'City Rome',
+                            location: 'Surat',
+                            price: '10000',
+                            time: 'Night',
+                            path: 'assets/images/place_1.png',
+                            stars: 5),
+                        getRecommendationPlace(
+                            place: 'Imperial palace',
+                            location: 'Rajkot',
+                            price: '8000',
+                            time: 'Day',
+                            path: 'assets/images/place_2.png',
+                            stars: 3.5),
+                        getRecommendationPlace(
+                            place: 'Taj hotel',
+                            location: 'Ahmedabad',
+                            price: '5000',
+                            time: 'Night',
+                            path: 'assets/images/place_3.png',
+                            stars: 4),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ],
@@ -219,6 +223,251 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  Widget getHotel({place, location, time, price, path, stars}) {
+    return Container(
+      height: 300,
+      child: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 30),
+            child: Column(
+              children: [
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(20),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 10.0,
+                          spreadRadius: 0.1,
+                          color: Colors.black12,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  image: DecorationImage(
+                    image: AssetImage(path),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                width: 140,
+                height: 140,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(child: Container()),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image.asset(
+                        'assets/icons/icon_save.png',
+                        width: 40,
+                        height: 40,
+                      ),
+                    ),
+                  ],
+                )
+                ,
+              ),
+              /*Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Image(
+                        image: AssetImage(path),
+                        fit: BoxFit.cover,
+                        width: 140,
+                        height: 140),
+                  ),
+                ],
+              ),*/
+              Container(
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          place,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 2.0, 8.0, 0),
+                          child: Icon(
+                            Icons.location_on,
+                            size: 14,
+                            color: Color.fromARGB(255, 34, 198, 143),
+                          ),
+                        ),
+                        Text(
+                          location,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black,
+                            fontSize: 12,
+                          ),
+                        ),
+                        Expanded(child: Container()),
+                        Container(
+                          padding: EdgeInsets.fromLTRB(8, 4, 8, 4),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(25),
+                            ),
+                            color: Colors.black12,
+                          ),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                'assets/icons/icon_star.png',
+                                width: 12,
+                                height: 12,
+                              ),
+                              Text(
+                                " " + stars.toString(),
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color.fromARGB(255, 34, 198, 143),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          time,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            color: Colors.black,
+                            fontSize: 12,
+                          ),
+                        ),
+                        Text(
+                          ' / ',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.black,
+                          ),
+                        ),
+                        Text(
+                          '₹' + price,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget AllHotels() {
+    return Column(
+      children: [
+        Container(
+          padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+          child: Row(
+            children: [
+              const Text(
+                'All hotels',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              Expanded(child: Container()),
+              const Text('Show more'),
+              const Icon(Icons.navigate_next),
+            ],
+          ),
+        ),
+        Container(
+          height: 1000,
+          child: GridView.count(
+            physics: NeverScrollableScrollPhysics(),
+            crossAxisCount: 2,
+            padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
+            childAspectRatio: 150 / 235,
+            addAutomaticKeepAlives: false,
+            // cacheExtent: 4,
+            children: [
+              getHotel(
+                  place: 'City Rome',
+                  location: 'Surat',
+                  price: '10000',
+                  time: 'Night',
+                  path: 'assets/images/place_1.png',
+                  stars: 5),
+              getHotel(
+                  place: 'City Rome',
+                  location: 'Surat',
+                  price: '10000',
+                  time: 'Night',
+                  path: 'assets/images/place_1.png',
+                  stars: 5),
+              getHotel(
+                  place: 'City Rome',
+                  location: 'Surat',
+                  price: '10000',
+                  time: 'Night',
+                  path: 'assets/images/place_1.png',
+                  stars: 5),
+              getHotel(
+                  place: 'Imperial palace',
+                  location: 'Rajkot',
+                  price: '8000',
+                  time: 'Day',
+                  path: 'assets/images/place_2.png',
+                  stars: 3.5),
+              getHotel(
+                  place: 'Taj hotel',
+                  location: 'Ahmedabad',
+                  price: '5000',
+                  time: 'Night',
+                  path: 'assets/images/place_3.png',
+                  stars: 4),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
   Widget AllFeaturedPlaces() {
     return Column(
       children: [
@@ -245,7 +494,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Expanded(
                 child: SizedBox(
-                  height: 220,
+                  height: 230,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     addAutomaticKeepAlives: false,
@@ -305,8 +554,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   Expanded(child: Container()),
                   Image.asset(
                     'assets/icons/icon_save.png',
-                    width: 60,
-                    height: 60,
+                    width: 50,
+                    height: 50,
                   ),
                 ],
               ),
@@ -316,9 +565,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   Text(
                     place,
                     style: TextStyle(
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w500,
                       color: Colors.white,
-                      fontSize: 25,
+                      fontSize: 22,
                     ),
                   ),
                 ],
@@ -337,7 +586,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       color: Colors.white,
-                      fontSize: 18,
+                      fontSize: 14,
                     ),
                   ),
                 ],
@@ -460,8 +709,8 @@ class _HomeScreenState extends State<HomeScreen> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(22),
                 child: SizedBox(
-                  height: selected!=null ? 77:80,
-                  width: selected!=null ? 77:80,
+                  height: selected != null ? 77 : 80,
+                  width: selected != null ? 77 : 80,
                   child: Image.asset(path, fit: BoxFit.cover),
                 ),
               ),
