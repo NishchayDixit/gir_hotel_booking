@@ -32,14 +32,14 @@ class HotelDetailsScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const <Widget>[
                           Image(
-                            width: 40.0,
-                            height: 40.0,
+                            width: 45.0,
+                            height: 45.0,
                             image: AssetImage('assets/icons/icon_back_bg.png'),
                           ),
                           Image(
-                            width: 40.0,
-                            height: 40.0,
-                            image: AssetImage('assets/icons/icon_save.png'),
+                            width: 45.0,
+                            height: 45.0,
+                            image: AssetImage('assets/icons/icon_save_rect_bg.png'),
                           ),
                         ],
                       ),
@@ -161,9 +161,11 @@ class HotelDetailsScreen extends StatelessWidget {
                               children: <Widget>[
                                 Row(
                                   children: const <Widget>[
-                                    Text(
-                                      'Hotel Nova Park\nInternational',
-                                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                                    Flexible(
+                                      child: Text(
+                                        'Hotel Nova Park International',
+                                        style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                                      ),
                                     ),
                                   ],
                                 )
