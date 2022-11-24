@@ -32,6 +32,7 @@ class HotelDetailsScreen extends StatelessWidget {
                   ],
                 ),
                 hotelFacilityComponentDesign(),
+                hotelPolicies(),
               ],
             ),
           ),
@@ -174,7 +175,7 @@ class HotelDetailsScreen extends StatelessWidget {
 
   //endregion
 
-  //region SIDEIMAGES PANEL
+  //region SIDE-IMAGES PANEL
   Widget customImagePanel() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -273,7 +274,7 @@ class HotelDetailsScreen extends StatelessWidget {
 
   //endregion
 
-  //region SLOTBOOKINGWIDGET
+  //region SLOT-BOOKING-WIDGET
   Widget slotBookingWidget(
       {required time, required isAvailable, required isActive}) {
     return Container(
@@ -336,9 +337,11 @@ class HotelDetailsScreen extends StatelessWidget {
 
   //endregion
 
+  //region HOTEL-FACILITY-COMPONENT DESIGN
   Widget hotelFacilityComponentDesign() {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 27.0, vertical: 30.0),
+      // margin: const EdgeInsets.symmetric(horizontal: 27.0, vertical: 30.0),
+      margin: const EdgeInsets.fromLTRB(27.0, 30.0, 27.0, 15.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -356,10 +359,22 @@ class HotelDetailsScreen extends StatelessWidget {
                 Expanded(
                   child: Column(
                     children: <Widget>[
-                      customContainerOfFacilities(icon: Icons.live_tv_rounded, color: const Color.fromARGB(255, 34, 198, 143), text: 'LED/LCD'),
-                      customContainerOfFacilities(icon: Icons.air_outlined, color: const Color.fromARGB(255, 34, 198, 143), text: 'Air Conditioner'),
-                      customContainerOfFacilities(icon: Icons.bathtub_rounded, color: const Color.fromARGB(255, 34, 198, 143), text: 'Bathroom Kit'),
-                      customContainerOfFacilities(icon: Icons.medical_services_rounded, color: const Color.fromARGB(255, 34, 198, 143), text: 'First aid kit'),
+                      customContainerOfFacilities(
+                          icon: Icons.live_tv_rounded,
+                          color: const Color.fromARGB(255, 34, 198, 143),
+                          text: 'LED/LCD'),
+                      customContainerOfFacilities(
+                          icon: Icons.air_outlined,
+                          color: const Color.fromARGB(255, 34, 198, 143),
+                          text: 'Air Conditioner'),
+                      customContainerOfFacilities(
+                          icon: Icons.bathtub_rounded,
+                          color: const Color.fromARGB(255, 34, 198, 143),
+                          text: 'Bathroom Kit'),
+                      customContainerOfFacilities(
+                          icon: Icons.medical_services_rounded,
+                          color: const Color.fromARGB(255, 34, 198, 143),
+                          text: 'First aid kit'),
                     ],
                   ),
                 ),
@@ -369,10 +384,22 @@ class HotelDetailsScreen extends StatelessWidget {
                 Expanded(
                   child: Column(
                     children: <Widget>[
-                      customContainerOfFacilities(icon: Icons.wifi_rounded, color: const Color.fromARGB(255, 34, 198, 143), text: 'Internet-Wifi'),
-                      customContainerOfFacilities(icon: Icons.phone_in_talk, color: const Color.fromARGB(255, 34, 198, 143), text: 'Intercom'),
-                      customContainerOfFacilities(icon: Icons.back_hand_rounded, color: const Color.fromARGB(255, 34, 198, 143), text: 'Sanitization'),
-                      customContainerOfFacilities(icon: Icons.directions_car_filled_rounded, color: const Color.fromARGB(255, 34, 198, 143), text: 'Parking'),
+                      customContainerOfFacilities(
+                          icon: Icons.wifi_rounded,
+                          color: const Color.fromARGB(255, 34, 198, 143),
+                          text: 'Internet-Wifi'),
+                      customContainerOfFacilities(
+                          icon: Icons.phone_in_talk,
+                          color: const Color.fromARGB(255, 34, 198, 143),
+                          text: 'Intercom'),
+                      customContainerOfFacilities(
+                          icon: Icons.back_hand_rounded,
+                          color: const Color.fromARGB(255, 34, 198, 143),
+                          text: 'Sanitization'),
+                      customContainerOfFacilities(
+                          icon: Icons.directions_car_filled_rounded,
+                          color: const Color.fromARGB(255, 34, 198, 143),
+                          text: 'Parking'),
                     ],
                   ),
                 ),
@@ -384,7 +411,11 @@ class HotelDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget customContainerOfFacilities({required icon, required color, required text}) {
+  //endregion
+
+  //region FACILITIES-CONTAINER DESIGN
+  Widget customContainerOfFacilities(
+      {required icon, required color, required text}) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5.0),
       padding: const EdgeInsets.all(8.0),
@@ -410,4 +441,93 @@ class HotelDetailsScreen extends StatelessWidget {
       ),
     );
   }
+
+  //endregion
+
+  //region HOTEL-POLICIES DESIGN
+  Widget hotelPolicies() {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(27.0, 15.0, 27.0, 15.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            margin: const EdgeInsets.only(bottom: 10.0),
+            child: Row(
+              children: const <Widget>[
+                Text(
+                  'Hotel Policies',
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    color: Color.fromARGB(255, 34, 198, 143),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Column(
+            children: <Widget>[
+              customContainerForPolicies(
+                  mainText: 'Age Restriction',
+                  subText: 'Age should be 18+ for booking.'),
+              customContainerForPolicies(
+                  mainText: 'Id Proof',
+                  subText:
+                      'According to government regulations, a valid original Photo ID has to be carried by every person above the age of 18 staying at the hotel. The identification proofs accepted are Driving License, Voters Card, Passport, Adhar Card. Without valid original ID the guest will not be allowed to check in. NOTE: PAN Cards will not be accepted as a Valid ID CARD.'),
+              customContainerForPolicies(
+                  mainText: 'Are Local Ids Allowed?',
+                  subText: 'Yes, Local ids are allowed.'),
+              customContainerForPolicies(
+                  mainText: 'Are unmarried couples allowed?',
+                  subText: 'Yes, unmarried couples are allowed.'),
+              customContainerForPolicies(
+                  mainText: 'Is smoking allowed?',
+                  subText: 'Is smoking allowed?'),
+              customContainerForPolicies(
+                  mainText: 'Is Drinking allowed?',
+                  subText: 'Yes, drinking is allowed.'),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+  //endregion
+
+  //region HOTEL-POLICIES-CARD DESIGN
+  Widget customContainerForPolicies({required mainText, required subText}) {
+    return Container(
+      margin: const EdgeInsets.only(top: 10.0),
+      padding: const EdgeInsets.all(10.0),
+      width: double.maxFinite,
+      decoration: BoxDecoration(
+        color: const Color.fromARGB(255, 244, 244, 244),
+        borderRadius: const BorderRadius.all(
+          Radius.circular(16.0),
+        ),
+        border: Border.all(
+          color: const Color.fromARGB(255, 237, 237, 237),
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            mainText,
+            style: const TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold),
+          ),
+          Text(
+            subText,
+            textAlign: TextAlign.left,
+            style: const TextStyle(
+                color: Color.fromARGB(255, 150, 150, 150),
+                fontSize: 15.5,
+                fontWeight: FontWeight.normal),
+          ),
+        ],
+      ),
+    );
+  }
+  //endregion
+
 }
