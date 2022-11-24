@@ -32,14 +32,15 @@ class HotelDetailsScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const <Widget>[
                           Image(
-                            width: 40.0,
-                            height: 40.0,
+                            width: 45.0,
+                            height: 45.0,
                             image: AssetImage('assets/icons/icon_back_bg.png'),
                           ),
                           Image(
-                            width: 40.0,
-                            height: 40.0,
-                            image: AssetImage('assets/icons/icon_save.png'),
+                            width: 45.0,
+                            height: 45.0,
+                            image: AssetImage(
+                                'assets/icons/icon_save_rect_bg.png'),
                           ),
                         ],
                       ),
@@ -155,18 +156,101 @@ class HotelDetailsScreen extends StatelessWidget {
                           child: Container(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 15.0,
-                              vertical: 10.0,
+                              vertical: 15.0,
                             ),
                             child: Column(
                               children: <Widget>[
                                 Row(
-                                  children: const <Widget>[
-                                    Text(
-                                      'Hotel Nova Park\nInternational',
-                                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    const Flexible(
+                                      child: Text(
+                                        'Hotel Nova Park International',
+                                        style: TextStyle(
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 2.0,
+                                        horizontal: 10.0,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        borderRadius: const BorderRadius.all(
+                                          Radius.circular(15.0),
+                                        ),
+                                        border: Border.all(
+                                          color: Colors.black12,
+                                        ),
+                                      ),
+                                      child: Center(
+                                        child: Column(
+                                          children: const <Widget>[
+                                            Icon(
+                                              Icons.location_on,
+                                              color: Color.fromARGB(
+                                                  255, 34, 198, 143),
+                                              size: 24.0,
+                                            ),
+                                            Text(
+                                              'Map',
+                                              style: TextStyle(
+                                                fontSize: 12.0,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
                                     ),
                                   ],
-                                )
+                                ),
+                                Container(
+                                  margin: const EdgeInsets.only(top: 8.0),
+                                  child: Row(
+                                    children: const <Widget>[
+                                      Icon(
+                                        Icons.location_on,
+                                        size: 18.0,
+                                        color:
+                                            Color.fromARGB(255, 34, 198, 143),
+                                      ),
+                                      SizedBox(
+                                        width: 5.0,
+                                      ),
+                                      Flexible(
+                                        child: Text(
+                                          'Hotel Star Place, Moti tank Chowk, Parikashi Nagar, Sadar, Rajkot, Gujarat-362001',
+                                          style: TextStyle(
+                                              fontSize: 13.0,
+                                              color: Colors.black45),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  margin: const EdgeInsets.only(top: 25.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: const <Widget>[
+                                      Flexible(
+                                        child: Text(
+                                          'Book A Slot',
+                                          style: TextStyle(
+                                            fontSize: 18.0,
+                                            color: Color.fromARGB(
+                                                255, 34, 198, 143),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+
+                                ),
                               ],
                             ),
                           ),
@@ -181,5 +265,9 @@ class HotelDetailsScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget SlotBookingWidget({time, isAvailable, isActive}) {
+    return Container();
   }
 }
