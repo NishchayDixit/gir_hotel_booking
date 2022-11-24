@@ -12,32 +12,35 @@ class HotelDetailsScreen extends StatelessWidget {
       child: SafeArea(
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          body: Column(
-            children: <Widget>[
-              Stack(
-                children: <Widget>[
-                  const ClipRRect(
-                    borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(30.0),
-                      bottomLeft: Radius.circular(30.0),
+          body: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Stack(
+                  children: <Widget>[
+                    const ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(30.0),
+                        bottomLeft: Radius.circular(30.0),
+                      ),
+                      child: Image(
+                        image: AssetImage('assets/images/place_5.jpg'),
+                      ),
                     ),
-                    child: Image(
-                      image: AssetImage('assets/images/place_5.jpg'),
-                    ),
-                  ),
-                  customCard(),
-                  customAppBar(),
-                  customImagePanel(),
-                ],
-              ),
-            ],
+                    customCard(),
+                    customAppBar(),
+                    customImagePanel(),
+                  ],
+                ),
+                hotelFacilityComponentDesign(),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  //region HOTELCARD DESIGN
+  //region HOTEL-CARD DESIGN
   Widget customCard() {
     return Container(
       margin: const EdgeInsets.only(top: 440.0),
@@ -168,6 +171,7 @@ class HotelDetailsScreen extends StatelessWidget {
       ),
     );
   }
+
   //endregion
 
   //region SIDEIMAGES PANEL
@@ -266,6 +270,7 @@ class HotelDetailsScreen extends StatelessWidget {
       ],
     );
   }
+
   //endregion
 
   //region SLOTBOOKINGWIDGET
@@ -304,9 +309,10 @@ class HotelDetailsScreen extends StatelessWidget {
       ),
     );
   }
+
   //endregion
 
-  //region CUSTOMAPPBAR
+  //region CUSTOM-APPBAR
   Widget customAppBar() {
     return Container(
       padding: const EdgeInsets.all(20.0),
@@ -327,5 +333,81 @@ class HotelDetailsScreen extends StatelessWidget {
       ),
     );
   }
+
   //endregion
+
+  Widget hotelFacilityComponentDesign() {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 27.0, vertical: 30.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          const Text(
+            'Hotel Facility',
+            style: TextStyle(
+              fontSize: 18.0,
+              color: Color.fromARGB(255, 34, 198, 143),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 20.0),
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: Column(
+                    children: <Widget>[
+                      customContainerOfFacilities(icon: Icons.live_tv_rounded, color: const Color.fromARGB(255, 34, 198, 143), text: 'LED/LCD'),
+                      customContainerOfFacilities(icon: Icons.air_outlined, color: const Color.fromARGB(255, 34, 198, 143), text: 'Air Conditioner'),
+                      customContainerOfFacilities(icon: Icons.bathtub_rounded, color: const Color.fromARGB(255, 34, 198, 143), text: 'Bathroom Kit'),
+                      customContainerOfFacilities(icon: Icons.medical_services_rounded, color: const Color.fromARGB(255, 34, 198, 143), text: 'First aid kit'),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  width: 10.0,
+                ),
+                Expanded(
+                  child: Column(
+                    children: <Widget>[
+                      customContainerOfFacilities(icon: Icons.wifi_rounded, color: const Color.fromARGB(255, 34, 198, 143), text: 'Internet-Wifi'),
+                      customContainerOfFacilities(icon: Icons.phone_in_talk, color: const Color.fromARGB(255, 34, 198, 143), text: 'Intercom'),
+                      customContainerOfFacilities(icon: Icons.back_hand_rounded, color: const Color.fromARGB(255, 34, 198, 143), text: 'Sanitization'),
+                      customContainerOfFacilities(icon: Icons.directions_car_filled_rounded, color: const Color.fromARGB(255, 34, 198, 143), text: 'Parking'),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget customContainerOfFacilities({required icon, required color, required text}) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 5.0),
+      padding: const EdgeInsets.all(8.0),
+      decoration: BoxDecoration(
+        border: Border.all(width: 1.0, color: Colors.black12),
+        borderRadius: const BorderRadius.all(
+          Radius.circular(8.0),
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Icon(
+            icon,
+            color: color,
+            size: 24.0,
+          ),
+          const SizedBox(
+            width: 8.0,
+          ),
+          Flexible(child: Text(text)),
+        ],
+      ),
+    );
+  }
 }
