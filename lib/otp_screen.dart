@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:gir_hotel_booking/home_screen.dart';
 
 class OTPScreen extends StatefulWidget {
   const OTPScreen({Key? key}) : super(key: key);
@@ -61,12 +62,12 @@ class _OTPScreenState extends State<OTPScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
-                            rect_OTP('0'),
-                            rect_OTP('0'),
-                            rect_OTP('0'),
-                            rect_OTP('0'),
-                            rect_OTP('0'),
-                            rect_OTP('0'),
+                            rect_OTP('1'),
+                            rect_OTP('2'),
+                            rect_OTP('8'),
+                            rect_OTP('2'),
+                            rect_OTP('5'),
+                            rect_OTP('9'),
                           ],
                         ),
                       ),
@@ -122,6 +123,23 @@ class _OTPScreenState extends State<OTPScreen> {
                           ],
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: InkWell(
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                            focusColor: Color.fromARGB(255, 29, 188, 134),
+                            onTap: () {
+                              Navigator.of(context).pushAndRemoveUntil(
+                                  MaterialPageRoute(
+                                      builder: (context) => HomeScreen()),
+                                  (Route<dynamic> route) => false);
+                              // Navigator.removeRouteBelow(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
+                              // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
+                            },
+                            child: Icon(Icons.arrow_circle_right_rounded,
+                                size: 44,
+                                color: Color.fromARGB(255, 29, 188, 134))),
+                      )
                     ],
                   ),
                 ),

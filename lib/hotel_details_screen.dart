@@ -2,38 +2,54 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-class HotelDetailsScreen extends StatelessWidget {
-  const HotelDetailsScreen({Key? key}) : super(key: key);
+class HotelDetailsScreen extends StatefulWidget {
+  // const HotelDetailsScreen({Key? key}) : super(key: key);
+  String img_path;
+
+  HotelDetailsScreen({Key? key, required this.img_path}) : super(key: key);
 
   @override
+  State<HotelDetailsScreen> createState() => _HotelDetailsScreenState();
+}
+
+class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: SafeArea(
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-          body: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                Stack(
-                  children: <Widget>[
-                    const ClipRRect(
-                      borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(30.0),
-                        bottomLeft: Radius.circular(30.0),
+    return Theme(
+      data: ThemeData(
+        useMaterial3: true,
+      ),
+      child: Container(
+        color: Colors.white,
+        child: SafeArea(
+          child: Scaffold(
+            backgroundColor: Colors.transparent,
+            body: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  Stack(
+                    children: <Widget>[
+                      ClipRRect(
+                        borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(30.0),
+                          bottomLeft: Radius.circular(30.0),
+                        ),
+                        child: Image(
+                          image: AssetImage(widget.img_path),
+                          height: 500,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                      child: Image(
-                        image: AssetImage('assets/images/place_5.jpg'),
-                      ),
-                    ),
-                    customCard(),
-                    customAppBar(),
-                    customImagePanel(),
-                  ],
-                ),
-                hotelFacilityComponentDesign(),
-                hotelPolicies(),
-              ],
+                      customCard(),
+                      customAppBar(),
+                      customImagePanel(),
+                    ],
+                  ),
+                  hotelFacilityComponentDesign(),
+                  hotelPolicies(),
+                ],
+              ),
             ),
           ),
         ),
@@ -174,8 +190,6 @@ class HotelDetailsScreen extends StatelessWidget {
   }
 
   //endregion
-
-  //region SIDE-IMAGES PANEL
   Widget customImagePanel() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -273,8 +287,6 @@ class HotelDetailsScreen extends StatelessWidget {
   }
 
   //endregion
-
-  //region SLOT-BOOKING-WIDGET
   Widget slotBookingWidget(
       {required time, required isAvailable, required isActive}) {
     return Container(
@@ -312,18 +324,21 @@ class HotelDetailsScreen extends StatelessWidget {
   }
 
   //endregion
-
-  //region CUSTOM-APPBAR
   Widget customAppBar() {
     return Container(
       padding: const EdgeInsets.all(20.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: const <Widget>[
-          Image(
-            width: 45.0,
-            height: 45.0,
-            image: AssetImage('assets/icons/icon_back_bg.png'),
+        children: <Widget>[
+          GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Image(
+              width: 45.0,
+              height: 45.0,
+              image: AssetImage('assets/icons/icon_back_bg.png'),
+            ),
           ),
           Image(
             width: 45.0,
@@ -336,8 +351,6 @@ class HotelDetailsScreen extends StatelessWidget {
   }
 
   //endregion
-
-  //region HOTEL-FACILITY-COMPONENT DESIGN
   Widget hotelFacilityComponentDesign() {
     return Container(
       // margin: const EdgeInsets.symmetric(horizontal: 27.0, vertical: 30.0),
@@ -412,8 +425,6 @@ class HotelDetailsScreen extends StatelessWidget {
   }
 
   //endregion
-
-  //region FACILITIES-CONTAINER DESIGN
   Widget customContainerOfFacilities(
       {required icon, required color, required text}) {
     return Container(
@@ -443,8 +454,6 @@ class HotelDetailsScreen extends StatelessWidget {
   }
 
   //endregion
-
-  //region HOTEL-POLICIES DESIGN
   Widget hotelPolicies() {
     return Container(
       margin: const EdgeInsets.fromLTRB(27.0, 15.0, 27.0, 15.0),
@@ -492,9 +501,8 @@ class HotelDetailsScreen extends StatelessWidget {
       ),
     );
   }
-  //endregion
 
-  //region HOTEL-POLICIES-CARD DESIGN
+  //endregion
   Widget customContainerForPolicies({required mainText, required subText}) {
     return Container(
       margin: const EdgeInsets.only(top: 10.0),
@@ -528,6 +536,4 @@ class HotelDetailsScreen extends StatelessWidget {
       ),
     );
   }
-  //endregion
-
 }

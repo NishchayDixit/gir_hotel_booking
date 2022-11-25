@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gir_hotel_booking/otp_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -38,8 +39,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         Text(
                           'Welcome to',
                           style: TextStyle(
-                              fontSize: 32.0,
-                              fontWeight: FontWeight.normal,
+                            fontSize: 32.0,
+                            fontWeight: FontWeight.normal,
                           ),
                           textAlign: TextAlign.start,
                         ),
@@ -154,7 +155,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: 20,
                           width: 20,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => OTPScreen()));
+                        },
                         style: OutlinedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 22.0, vertical: 12.0),

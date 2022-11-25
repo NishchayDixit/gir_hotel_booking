@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gir_hotel_booking/hotel_details_screen.dart';
+import 'package:gir_hotel_booking/signup_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -44,12 +46,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.end,
-                     children:[
-
-                       Container(
-                           alignment: Alignment.bottomCenter,
-                           color: Colors.transparent, child: customNavigationBar())
-                     ],
+                    children: [
+                      Container(
+                          alignment: Alignment.bottomCenter,
+                          color: Colors.transparent,
+                          child: customNavigationBar())
+                    ],
                   ),
                 ],
               ),
@@ -143,7 +145,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     onTap: () {
                       setState(() {
                         print('3');
-                        page_no = 3;
+                        // page_no = 3;
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SignupScreen(),
+                            ));
                       });
                     },
                     child: page_no == 3
@@ -166,20 +173,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               style: TextStyle(color: Colors.black),
                             ),
                           ),
-                  ), /*InkWell(onTap: () {},
-                    child: page_no == 1
-                        ? const Icon(Icons.home_rounded,
-                      color: Color.fromARGB(255, 190, 204, 227), size: 35,)
-                        : const Icon(Icons.home_rounded,
-                      color: Color.fromARGB(255, 190, 204, 227), size: 35,),),
-                  InkWell(onTap: () {},
-                    child: const Icon(
-                      Icons.laptop, color: Color.fromARGB(255, 190, 204, 227),
-                      size: 35,),),
-                  InkWell(onTap: () {},
-                    child: const Icon(
-                      Icons.person, color: Color.fromARGB(255, 190, 204, 227),
-                      size: 35,),),*/
+                  ),
                 ],
               ),
             ),
@@ -216,141 +210,138 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ),
-        Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                image: DecorationImage(
-                  image: AssetImage(path),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              width: 140,
-              height: 140,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(child: Container()),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image.asset(
-                      'assets/icons/icon_save.png',
-                      width: 40,
-                      height: 40,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            /*Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ClipRRect(
+        GestureDetector(
+          onTap: () {
+            print('allhotels');
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HotelDetailsScreen(img_path: path),
+                ));
+          },
+          child: Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  child: Image(
-                      image: AssetImage(path),
-                      fit: BoxFit.cover,
-                      width: 140,
-                      height: 140),
+                  image: DecorationImage(
+                    image: AssetImage(path),
+                    fit: BoxFit.cover,
+                  ),
                 ),
-              ],
-            ),*/
-            Container(
-              padding: EdgeInsets.all(20),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        place,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black,
-                          fontSize: 18,
-                        ),
+                width: 140,
+                height: 140,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(child: Container()),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image.asset(
+                        'assets/icons/icon_save.png',
+                        width: 40,
+                        height: 40,
                       ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 2.0, 8.0, 0),
-                        child: Icon(
-                          Icons.location_on,
-                          size: 14,
-                          color: Color.fromARGB(255, 34, 198, 143),
-                        ),
-                      ),
-                      Text(
-                        location,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black,
-                          fontSize: 12,
-                        ),
-                      ),
-                      Expanded(child: Container()),
-                      Container(
-                        padding: EdgeInsets.fromLTRB(8, 4, 8, 4),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(25),
-                          ),
-                          color: Colors.black12,
-                        ),
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              'assets/icons/icon_star.png',
-                              width: 12,
-                              height: 12,
-                            ),
-                            Text(
-                              " " + stars.toString(),
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                                color: Color.fromARGB(255, 34, 198, 143),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        time,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black,
-                          fontSize: 12,
-                        ),
-                      ),
-                      Text(
-                        ' / ',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Text(
-                        '₹' + price,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+              Container(
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          place,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 2.0, 8.0, 0),
+                          child: Icon(
+                            Icons.location_on,
+                            size: 14,
+                            color: Color.fromARGB(255, 34, 198, 143),
+                          ),
+                        ),
+                        Text(
+                          location,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black,
+                            fontSize: 12,
+                          ),
+                        ),
+                        Expanded(child: Container()),
+                        Container(
+                          padding: EdgeInsets.fromLTRB(8, 4, 8, 4),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(25),
+                            ),
+                            color: Colors.black12,
+                          ),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                'assets/icons/icon_star.png',
+                                width: 12,
+                                height: 12,
+                              ),
+                              Text(
+                                " " + stars.toString(),
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color.fromARGB(255, 34, 198, 143),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          time,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            color: Colors.black,
+                            fontSize: 12,
+                          ),
+                        ),
+                        Text(
+                          ' / ',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.black,
+                          ),
+                        ),
+                        Text(
+                          '₹' + price,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ],
     );
@@ -500,118 +491,128 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget getRecommendationPlace({place, location, time, price, path, stars}) {
     return Padding(
       padding: EdgeInsets.fromLTRB(20, 5, 0, 5),
-      child: Container(
-        width: 175,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(path),
-            fit: BoxFit.cover,
-          ),
-          borderRadius: BorderRadius.circular(22),
-        ),
+      child: GestureDetector(
+        onTap: () {
+          print('RecommendationPlace');
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HotelDetailsScreen(img_path: path),
+              ));
+        },
         child: Container(
-          padding: EdgeInsets.all(12),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Expanded(child: Container()),
-                  Image.asset(
-                    'assets/icons/icon_save.png',
-                    width: 40,
-                    height: 40,
-                  ),
-                ],
-              ),
-              Expanded(child: Container()),
-              Row(
-                children: [
-                  Text(
-                    place,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                      fontSize: 16,
+          width: 175,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(path),
+              fit: BoxFit.cover,
+            ),
+            borderRadius: BorderRadius.circular(22),
+          ),
+          child: Container(
+            padding: EdgeInsets.all(12),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Expanded(child: Container()),
+                    Image.asset(
+                      'assets/icons/icon_save.png',
+                      width: 40,
+                      height: 40,
                     ),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 2.0, 8.0, 0),
-                    child: Icon(
-                      Icons.location_on,
-                      size: 20,
-                      color: Color.fromARGB(255, 34, 198, 143),
-                    ),
-                  ),
-                  Text(
-                    location,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                      fontSize: 12,
-                    ),
-                  ),
-                  Expanded(child: Container()),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(8, 4, 12, 4),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(25),
+                  ],
+                ),
+                Expanded(child: Container()),
+                Row(
+                  children: [
+                    Text(
+                      place,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                        fontSize: 16,
                       ),
-                      color: Colors.white,
                     ),
-                    child: Row(
-                      children: [
-                        Image.asset(
-                          'assets/icons/icon_star.png',
-                          width: 18,
-                          height: 18,
+                  ],
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 2.0, 8.0, 0),
+                      child: Icon(
+                        Icons.location_on,
+                        size: 20,
+                        color: Color.fromARGB(255, 34, 198, 143),
+                      ),
+                    ),
+                    Text(
+                      location,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                        fontSize: 12,
+                      ),
+                    ),
+                    Expanded(child: Container()),
+                    Container(
+                      padding: EdgeInsets.fromLTRB(8, 4, 12, 4),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(25),
                         ),
-                        Text(
-                          " " + stars.toString(),
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
-                            color: Color.fromARGB(255, 34, 198, 143),
+                        color: Colors.white,
+                      ),
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            'assets/icons/icon_star.png',
+                            width: 18,
+                            height: 18,
                           ),
-                        )
-                      ],
+                          Text(
+                            " " + stars.toString(),
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              color: Color.fromARGB(255, 34, 198, 143),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  Text(
-                    time,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white,
-                      fontSize: 12,
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text(
+                      time,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white,
+                        fontSize: 12,
+                      ),
                     ),
-                  ),
-                  Text(
-                    ' / ',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white,
+                    Text(
+                      ' / ',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                  Text(
-                    '₹' + price,
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white,
+                    Text(
+                      '₹' + price,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                ],
-              )
-            ],
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -686,117 +687,127 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget getFeaturedPlace({place, location, time, price, path, stars}) {
     return Padding(
       padding: EdgeInsets.fromLTRB(20, 5, 0, 5),
-      child: Container(
-        width: 340,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(path),
-            fit: BoxFit.cover,
-          ),
-          borderRadius: BorderRadius.circular(22),
-        ),
+      child: GestureDetector(
+        onTap: () {
+          print('FeaturedPlace');
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HotelDetailsScreen(img_path: path),
+              ));
+        },
         child: Container(
-          padding: EdgeInsets.all(12),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Expanded(child: Container()),
-                  Image.asset(
-                    'assets/icons/icon_save.png',
-                    width: 50,
-                    height: 50,
-                  ),
-                ],
-              ),
-              Expanded(child: Container()),
-              Row(
-                children: [
-                  Text(
-                    place,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white,
-                      fontSize: 22,
+          width: 340,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(path),
+              fit: BoxFit.cover,
+            ),
+            borderRadius: BorderRadius.circular(22),
+          ),
+          child: Container(
+            padding: EdgeInsets.all(12),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Expanded(child: Container()),
+                    Image.asset(
+                      'assets/icons/icon_save.png',
+                      width: 50,
+                      height: 50,
                     ),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 2.0, 8.0, 0),
-                    child: Icon(
-                      Icons.location_on,
-                      color: Color.fromARGB(255, 34, 198, 143),
-                    ),
-                  ),
-                  Text(
-                    location,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  Text(
-                    time,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white,
-                      fontSize: 15,
-                    ),
-                  ),
-                  Text(
-                    ' / ',
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Text(
-                    '₹' + price,
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Expanded(child: Container()),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(8, 4, 12, 4),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(25),
+                  ],
+                ),
+                Expanded(child: Container()),
+                Row(
+                  children: [
+                    Text(
+                      place,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                        fontSize: 22,
                       ),
-                      color: Colors.white,
                     ),
-                    child: Row(
-                      children: [
-                        Image.asset(
-                          'assets/icons/icon_star.png',
-                          width: 25,
-                          height: 25,
+                  ],
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 2.0, 8.0, 0),
+                      child: Icon(
+                        Icons.location_on,
+                        color: Color.fromARGB(255, 34, 198, 143),
+                      ),
+                    ),
+                    Text(
+                      location,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text(
+                      time,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white,
+                        fontSize: 15,
+                      ),
+                    ),
+                    Text(
+                      ' / ',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Text(
+                      '₹' + price,
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Expanded(child: Container()),
+                    Container(
+                      padding: EdgeInsets.fromLTRB(8, 4, 12, 4),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(25),
                         ),
-                        Text(
-                          " " + stars.toString(),
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                            color: Color.fromARGB(255, 34, 198, 143),
+                        color: Colors.white,
+                      ),
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            'assets/icons/icon_star.png',
+                            width: 25,
+                            height: 25,
                           ),
-                        )
-                      ],
+                          Text(
+                            " " + stars.toString(),
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              color: Color.fromARGB(255, 34, 198, 143),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              )
-            ],
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),

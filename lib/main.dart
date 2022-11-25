@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gir_hotel_booking/home_screen.dart';
 import 'package:gir_hotel_booking/hotel_details_screen.dart';
+import 'package:gir_hotel_booking/login_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,13 +29,12 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
 
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'Poppins',
-        bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          backgroundColor: Colors.transparent
-        )
-      ),
-      home: const HotelDetailsScreen(),
+          primarySwatch: Colors.blue,
+          fontFamily: 'Poppins',
+          bottomNavigationBarTheme: BottomNavigationBarThemeData(
+              backgroundColor: Colors.transparent)),
+      // home: const HomeScreen(),
+      home:const LoginScreen(),
     );
   }
 }
