@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gir_hotel_booking/checkout_screen.dart';
 import 'package:gir_hotel_booking/hotel_details_screen.dart';
 import 'package:gir_hotel_booking/signup_screen.dart';
 
@@ -38,6 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               AllFeaturedPlaces(),
                               AllRecommendationPlaces(),
                               AllHotels(),
+                              Container(height:100),
                             ],
                           ),
                         ),
@@ -118,6 +120,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     onTap: () {
                       setState(() {
                         page_no = 2;
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CheckoutScreen(),
+                            ));
                       });
                     },
                     child: page_no == 2
@@ -145,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     onTap: () {
                       setState(() {
                         print('3');
-                        // page_no = 3;
+                        page_no = 3;
                         Navigator.push(
                             context,
                             MaterialPageRoute(

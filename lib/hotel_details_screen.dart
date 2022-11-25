@@ -15,40 +15,43 @@ class HotelDetailsScreen extends StatefulWidget {
 class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
   @override
   Widget build(BuildContext context) {
-    return Theme(
-      data: ThemeData(
-        useMaterial3: true,
-      ),
-      child: Container(
-        color: Colors.white,
-        child: SafeArea(
-          child: Scaffold(
-            backgroundColor: Colors.transparent,
-            body: SingleChildScrollView(
-              child: Column(
-                children: <Widget>[
-                  Stack(
-                    children: <Widget>[
-                      ClipRRect(
-                        borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(30.0),
-                          bottomLeft: Radius.circular(30.0),
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: Theme(
+        data: ThemeData(
+          useMaterial3: true,
+        ),
+        child: Container(
+          color: Colors.white,
+          child: SafeArea(
+            child: Scaffold(
+              backgroundColor: Colors.transparent,
+              body: SingleChildScrollView(
+                child: Column(
+                  children: <Widget>[
+                    Stack(
+                      children: <Widget>[
+                        ClipRRect(
+                          borderRadius: BorderRadius.only(
+                            bottomRight: Radius.circular(30.0),
+                            bottomLeft: Radius.circular(30.0),
+                          ),
+                          child: Image(
+                            image: AssetImage(widget.img_path),
+                            height: 500,
+                            width: double.infinity,
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                        child: Image(
-                          image: AssetImage(widget.img_path),
-                          height: 500,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      customCard(),
-                      customAppBar(),
-                      customImagePanel(),
-                    ],
-                  ),
-                  hotelFacilityComponentDesign(),
-                  hotelPolicies(),
-                ],
+                        customCard(),
+                        customAppBar(),
+                        customImagePanel(),
+                      ],
+                    ),
+                    hotelFacilityComponentDesign(),
+                    hotelPolicies(),
+                  ],
+                ),
               ),
             ),
           ),

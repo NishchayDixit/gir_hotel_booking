@@ -12,122 +12,126 @@ class _SignupScreenState extends State<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('assets/images/background.png'),
-          fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/background.png'),
+            fit: BoxFit.cover,
+          ),
         ),
-      ),
-      child: SafeArea(
-        child: Scaffold(
-          resizeToAvoidBottomInset: false,
-          backgroundColor: Colors.transparent,
-          body: Container(
-            margin: const EdgeInsets.fromLTRB(10, 150, 10, 150),
-            // padding: EdgeInsets.only(top:40,bottom: 40),
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/signup_card_background.png'),
-                fit: BoxFit.fill,
+        child: SafeArea(
+          child: Scaffold(
+            resizeToAvoidBottomInset: false,
+            backgroundColor: Colors.transparent,
+            body: Container(
+              margin: const EdgeInsets.fromLTRB(10, 150, 10, 150),
+              // padding: EdgeInsets.only(top:40,bottom: 40),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/signup_card_background.png'),
+                  fit: BoxFit.fill,
+                ),
               ),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  padding: const EdgeInsets.only(bottom: 30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const <Widget>[
-                      Text(
-                        'Let’s ',
-                        style: TextStyle(
-                          fontSize: 25,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w400,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.only(bottom: 30),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const <Widget>[
+                        Text(
+                          'Let’s ',
+                          style: TextStyle(
+                            fontSize: 25,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
-                      ),
-                      Text(
-                        'you In',
-                        style: TextStyle(
-                          fontSize: 25,
-                          color: Color.fromARGB(255, 34, 198, 143),
-                          fontWeight: FontWeight.w600,
+                        Text(
+                          'you In',
+                          style: TextStyle(
+                            fontSize: 25,
+                            color: Color.fromARGB(255, 34, 198, 143),
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                Column(
-                  children: <Widget>[
-                    customTextField("First Name"),
-                    customTextField("Last Name"),
-                    customTextField(
-                      "Email",
-                      const Icon(
-                        Icons.mail_rounded,
-                        color: Color.fromARGB(255, 34, 198, 143),
-                      ),
-                    ),
-                    customTextField(
-                      "Select DOB",
-                      const Icon(
-                        Icons.calendar_month_sharp,
-                        color: Color.fromARGB(255, 34, 198, 143),
-                      ),
-                    ),
-                  ],
-                ),
-                Container(
-                  padding: const EdgeInsets.only(left: 7),
-                  child: Row(
+                  Column(
                     children: <Widget>[
-                      Transform.scale(
-                        scale: 1.0,
-                        child: Checkbox(
-                          value: show,
-                          activeColor: const Color.fromARGB(255, 34, 198, 143),
-                          onChanged: (e) {
-                            setState(
-                              () {
-                                show = !show;
-                              },
-                            );
-                          },
-                        ),
-                      ),
-                      const Text(
-                        "Agree with",
-                      ),
-                      const Text(
-                        "Terms & Conditions",
-                        style: TextStyle(
+                      customTextField("First Name"),
+                      customTextField("Last Name"),
+                      customTextField(
+                        "Email",
+                        const Icon(
+                          Icons.mail_rounded,
                           color: Color.fromARGB(255, 34, 198, 143),
                         ),
-                        // style: TextStyle(fontSize: 1.0),
+                      ),
+                      customTextField(
+                        "Select DOB",
+                        const Icon(
+                          Icons.calendar_month_sharp,
+                          color: Color.fromARGB(255, 34, 198, 143),
+                        ),
                       ),
                     ],
                   ),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                      padding: MaterialStateProperty.all(
-                          const EdgeInsets.fromLTRB(80, 15, 80, 15)),
-                      backgroundColor: MaterialStateProperty.all(
-                          const Color.fromARGB(255, 34, 198, 143)),
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)))),
-                  child: const Text(
-                    'Create Profile',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
+                  Container(
+                    padding: const EdgeInsets.only(left: 7),
+                    child: Row(
+                      children: <Widget>[
+                        Transform.scale(
+                          scale: 1.0,
+                          child: Checkbox(
+                            value: show,
+                            activeColor:
+                                const Color.fromARGB(255, 34, 198, 143),
+                            onChanged: (e) {
+                              setState(
+                                () {
+                                  show = !show;
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                        const Text(
+                          "Agree with",
+                        ),
+                        const Text(
+                          "Terms & Conditions",
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 34, 198, 143),
+                          ),
+                          // style: TextStyle(fontSize: 1.0),
+                        ),
+                      ],
                     ),
                   ),
-                ),
-              ],
+                  TextButton(
+                    onPressed: () {},
+                    style: ButtonStyle(
+                        padding: MaterialStateProperty.all(
+                            const EdgeInsets.fromLTRB(80, 15, 80, 15)),
+                        backgroundColor: MaterialStateProperty.all(
+                            const Color.fromARGB(255, 34, 198, 143)),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)))),
+                    child: const Text(
+                      'Create Profile',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
