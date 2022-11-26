@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class HotelDetailsScreen extends StatelessWidget {
   const HotelDetailsScreen({Key? key}) : super(key: key);
@@ -33,6 +34,7 @@ class HotelDetailsScreen extends StatelessWidget {
                 ),
                 hotelFacilityComponentDesign(),
                 hotelPolicies(),
+                reviewComponentDesign(),
               ],
             ),
           ),
@@ -71,7 +73,7 @@ class HotelDetailsScreen extends StatelessWidget {
                       child: Text(
                         'Hotel Nova Park International',
                         style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.bold),
+                            fontSize: 23, fontWeight: FontWeight.bold),
                       ),
                     ),
                     Container(
@@ -148,21 +150,24 @@ class HotelDetailsScreen extends StatelessWidget {
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: 12.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      slotBookingWidget(
-                          time: '1 hrs', isAvailable: false, isActive: false),
-                      const SizedBox(width: 5.0),
-                      slotBookingWidget(
-                          time: '3 hrs', isAvailable: true, isActive: true),
-                      const SizedBox(width: 5.0),
-                      slotBookingWidget(
-                          time: '6 hrs', isAvailable: true, isActive: false),
-                      const SizedBox(width: 5.0),
-                      slotBookingWidget(
-                          time: '12 hrs', isAvailable: true, isActive: false),
-                    ],
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        slotBookingWidget(
+                            time: '1 hrs', isAvailable: false, isActive: false),
+                        const SizedBox(width: 5.0),
+                        slotBookingWidget(
+                            time: '3 hrs', isAvailable: true, isActive: true),
+                        const SizedBox(width: 5.0),
+                        slotBookingWidget(
+                            time: '6 hrs', isAvailable: true, isActive: false),
+                        const SizedBox(width: 5.0),
+                        slotBookingWidget(
+                            time: '12 hrs', isAvailable: true, isActive: false),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -289,24 +294,26 @@ class HotelDetailsScreen extends StatelessWidget {
           Radius.circular(10.0),
         ),
       ),
-      child: Column(
-        children: <Widget>[
-          Text(
-            time,
-            style: TextStyle(
-                color: isActive ? Colors.white : null,
-                fontSize: 14.0,
-                fontWeight: FontWeight.bold),
-          ),
-          if (isAvailable == false)
+      child: Center(
+        child: Column(
+          children: <Widget>[
             Text(
-              'Not Available',
+              time,
               style: TextStyle(
-                fontSize: 10.0,
-                color: isActive ? Colors.white : null,
-              ),
+                  color: isActive ? Colors.white : null,
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.bold),
             ),
-        ],
+            if (isAvailable == false)
+              Text(
+                'Not Available',
+                style: TextStyle(
+                  fontSize: 10.0,
+                  color: isActive ? Colors.white : null,
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }
@@ -348,7 +355,7 @@ class HotelDetailsScreen extends StatelessWidget {
           const Text(
             'Hotel Facility',
             style: TextStyle(
-              fontSize: 18.0,
+              fontSize: 20.0,
               color: Color.fromARGB(255, 34, 198, 143),
             ),
           ),
@@ -458,7 +465,7 @@ class HotelDetailsScreen extends StatelessWidget {
                 Text(
                   'Hotel Policies',
                   style: TextStyle(
-                    fontSize: 18.0,
+                    fontSize: 20.0,
                     color: Color.fromARGB(255, 34, 198, 143),
                   ),
                 ),
@@ -492,6 +499,7 @@ class HotelDetailsScreen extends StatelessWidget {
       ),
     );
   }
+
   //endregion
 
   //region HOTEL-POLICIES-CARD DESIGN
@@ -520,12 +528,156 @@ class HotelDetailsScreen extends StatelessWidget {
             subText,
             textAlign: TextAlign.left,
             style: const TextStyle(
-                color: Color.fromARGB(255, 150, 150, 150),
-                fontSize: 15.5,
+                color: Colors.black38,
+                fontSize: 14.0,
                 fontWeight: FontWeight.normal),
           ),
         ],
       ),
+    );
+  }
+
+  //endregion
+
+  //region REVIEW-COMPONENT DESIGN
+  Widget reviewComponentDesign() {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(27.0, 15.0, 27.0, 15.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            margin: const EdgeInsets.only(bottom: 10.0),
+            child: Row(
+              children: const <Widget>[
+                Text(
+                  'Reviews',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: Color.fromARGB(255, 34, 198, 143),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 10.0),
+            padding: const EdgeInsets.symmetric(vertical: 10.0),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: const Color.fromARGB(255, 235, 235, 235),
+              ),
+              borderRadius: const BorderRadius.all(
+                Radius.circular(10.0),
+              ),
+            ),
+            child: Center(
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      const Text(
+                        '2',
+                        style: TextStyle(
+                          fontSize: 28.0,
+                          color: Color.fromARGB(255, 34, 198, 143),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 5.0),
+                        child: Row(
+                          children: const <Widget>[
+                            Text(
+                              '/',
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                color: Color.fromARGB(255, 34, 198, 143),
+                              ),
+                            ),
+                            Text(
+                              '5',
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                color: Color.fromARGB(255, 34, 198, 143),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const <Widget>[
+                        Text(
+                          'Based on ',
+                          style: TextStyle(color: Colors.black38, fontSize: 15.0),
+                        ),
+                        Text(
+                          '55 Reviews',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 34, 198, 143),
+                              fontSize: 15.0),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    margin: const EdgeInsets.only(top: 12.0),
+                    child: Column(
+                      children: <Widget>[
+                        reviewProgressBar(title: 'Excellent', percent: 50, numberOfPeople: '50'),
+                        reviewProgressBar(title: 'Very Good', percent: 90, numberOfPeople: '900'),
+                        reviewProgressBar(title: 'Average', percent: 100, numberOfPeople: '1000'),
+                        reviewProgressBar(title: 'Very Poor', percent: 0, numberOfPeople: '0'),
+                        reviewProgressBar(title: 'Poor', percent: 1, numberOfPeople: '1'),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+  //endregion
+
+  //region REVIEW-PROGRESS-BAR
+  Widget reviewProgressBar({required title, required percent, required numberOfPeople}) {
+    return  Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Expanded(
+          flex: 2,
+          child: Text(title, style: const TextStyle(fontSize: 12.5),textAlign: TextAlign.end,),
+        ),
+        Expanded(
+          flex: 5,
+          child: LinearPercentIndicator(
+            animation: true,
+            lineHeight: 7.0,
+            animationDuration: 1500,
+            percent: (percent/100),
+            backgroundColor:
+            const Color.fromARGB(255, 235, 235, 235),
+            progressColor: const Color.fromARGB(255, 34, 198, 143),
+            barRadius: const Radius.circular(25),
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: Text(
+            numberOfPeople,
+            style: const TextStyle(color: Colors.black38),
+          ),
+        ),
+      ],
     );
   }
   //endregion
