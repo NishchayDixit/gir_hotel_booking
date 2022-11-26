@@ -68,9 +68,11 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
       margin: const EdgeInsets.only(top: 440.0),
       alignment: Alignment.bottomCenter,
       color: Colors.transparent,
+
       child: Card(
         margin: const EdgeInsets.symmetric(horizontal: 25.0),
-        color: Colors.white,
+        color: Colors.transparent,
+
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(20.0),
@@ -79,6 +81,13 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
         elevation: 2,
         child: Center(
           child: Container(
+
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(
+                Radius.circular(20.0),
+              ),
+            ),
             padding: const EdgeInsets.symmetric(
               horizontal: 15.0,
               vertical: 15.0,
@@ -303,7 +312,7 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
       {required time, required isAvailable, required isActive}) {
     return Container(
       padding: isAvailable
-          ? const EdgeInsets.symmetric(horizontal: 13.0, vertical: 9.0)
+          ? const EdgeInsets.symmetric(horizontal: 17.5, vertical: 9.0)
           : const EdgeInsets.symmetric(horizontal: 10.0, vertical: 2.0),
       decoration: BoxDecoration(
         color: isActive == true
