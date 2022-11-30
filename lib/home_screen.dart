@@ -385,7 +385,7 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
             mainAxisSpacing: 10,
             crossAxisSpacing: 10,
-            childAspectRatio: 150 / 235,
+            childAspectRatio: 3 / 5,
             addAutomaticKeepAlives: false,
             // cacheExtent: 4,
             children: [

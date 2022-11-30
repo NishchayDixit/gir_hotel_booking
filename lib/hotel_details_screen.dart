@@ -1,8 +1,12 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
+// ignore: must_be_immutable
 class HotelDetailsScreen extends StatefulWidget {
   // const HotelDetailsScreen({Key? key}) : super(key: key);
   String img_path;
@@ -33,7 +37,7 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
                     Stack(
                       children: <Widget>[
                         ClipRRect(
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             bottomRight: Radius.circular(30.0),
                             bottomLeft: Radius.circular(30.0),
                           ),
@@ -52,6 +56,7 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
                     hotelFacilityComponentDesign(),
                     hotelPolicies(),
                     reviewComponentDesign(),
+                    writeReviewsComponent(),
                   ],
                 ),
               ),
@@ -68,11 +73,9 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
       margin: const EdgeInsets.only(top: 440.0),
       alignment: Alignment.bottomCenter,
       color: Colors.transparent,
-
       child: Card(
         margin: const EdgeInsets.symmetric(horizontal: 25.0),
         color: Colors.transparent,
-
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(20.0),
@@ -81,8 +84,7 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
         elevation: 2,
         child: Center(
           child: Container(
-
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(
                 Radius.circular(20.0),
@@ -169,6 +171,7 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
                           'Book A Slot',
                           style: TextStyle(
                             fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
                             color: Color.fromARGB(255, 34, 198, 143),
                           ),
                         ),
@@ -287,7 +290,9 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
                                 child: Text(
                                   "+10",
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 16.0),
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                      fontSize: 16.0),
                                 ),
                               ),
                             ),
@@ -317,7 +322,7 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
       decoration: BoxDecoration(
         color: isActive == true
             ? const Color.fromARGB(255, 34, 198, 143)
-            : const Color.fromARGB(255, 237, 237, 237),
+            : const Color.fromARGB(255, 240, 240, 240),
         borderRadius: const BorderRadius.all(
           Radius.circular(10.0),
         ),
@@ -359,13 +364,13 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
             onTap: () {
               Navigator.pop(context);
             },
-            child: Image(
+            child: const Image(
               width: 45.0,
               height: 45.0,
               image: AssetImage('assets/icons/icon_back_bg.png'),
             ),
           ),
-          Image(
+          const Image(
             width: 45.0,
             height: 45.0,
             image: AssetImage('assets/icons/icon_save_rect_bg.png'),
@@ -389,6 +394,7 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
             'Hotel Facility',
             style: TextStyle(
               fontSize: 20.0,
+              fontWeight: FontWeight.bold,
               color: Color.fromARGB(255, 34, 198, 143),
             ),
           ),
@@ -499,6 +505,7 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
                   'Hotel Policies',
                   style: TextStyle(
                     fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
                     color: Color.fromARGB(255, 34, 198, 143),
                   ),
                 ),
@@ -542,12 +549,12 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
       padding: const EdgeInsets.all(10.0),
       width: double.maxFinite,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 244, 244, 244),
+        color: const Color.fromARGB(255, 252, 252, 252),
         borderRadius: const BorderRadius.all(
           Radius.circular(16.0),
         ),
         border: Border.all(
-          color: const Color.fromARGB(255, 237, 237, 237),
+          color: const Color.fromARGB(255, 248, 248, 248),
         ),
       ),
       child: Column(
@@ -579,19 +586,17 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Container(
-            margin: const EdgeInsets.only(bottom: 10.0),
-            child: Row(
-              children: const <Widget>[
-                Text(
-                  'Reviews',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    color: Color.fromARGB(255, 34, 198, 143),
-                  ),
+          Row(
+            children: const <Widget>[
+              Text(
+                'Reviews',
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 34, 198, 143),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
           Container(
             margin: const EdgeInsets.only(top: 10.0),
@@ -614,11 +619,12 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
                         '2',
                         style: TextStyle(
                           fontSize: 28.0,
+                          fontWeight: FontWeight.bold,
                           color: Color.fromARGB(255, 34, 198, 143),
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.only(top: 5.0),
+                        margin: const EdgeInsets.only(top: 6.5),
                         child: Row(
                           children: const <Widget>[
                             Text(
@@ -647,13 +653,18 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
                       children: const <Widget>[
                         Text(
                           'Based on ',
-                          style: TextStyle(color: Colors.black38, fontSize: 15.0),
+                          style: TextStyle(
+                            color: Colors.black38,
+                            fontSize: 15.0,
+                          ),
                         ),
                         Text(
                           '55 Reviews',
                           style: TextStyle(
-                              color: Color.fromARGB(255, 34, 198, 143),
-                              fontSize: 15.0),
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 34, 198, 143),
+                            fontSize: 15.0,
+                          ),
                         ),
                       ],
                     ),
@@ -663,11 +674,24 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
                     margin: const EdgeInsets.only(top: 12.0),
                     child: Column(
                       children: <Widget>[
-                        reviewProgressBar(title: 'Excellent', percent: 50, numberOfPeople: '50'),
-                        reviewProgressBar(title: 'Very Good', percent: 90, numberOfPeople: '900'),
-                        reviewProgressBar(title: 'Average', percent: 100, numberOfPeople: '1000'),
-                        reviewProgressBar(title: 'Very Poor', percent: 0, numberOfPeople: '0'),
-                        reviewProgressBar(title: 'Poor', percent: 1, numberOfPeople: '1'),
+                        reviewProgressBar(
+                            title: 'Excellent',
+                            percent: 50,
+                            numberOfPeople: '50'),
+                        reviewProgressBar(
+                            title: 'Very Good',
+                            percent: 90,
+                            numberOfPeople: '900'),
+                        reviewProgressBar(
+                            title: 'Average',
+                            percent: 100,
+                            numberOfPeople: '1000'),
+                        reviewProgressBar(
+                            title: 'Very Poor',
+                            percent: 0,
+                            numberOfPeople: '0'),
+                        reviewProgressBar(
+                            title: 'Poor', percent: 1, numberOfPeople: '1'),
                       ],
                     ),
                   ),
@@ -679,16 +703,25 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
       ),
     );
   }
+
   //endregion
 
   //region REVIEW-PROGRESS-BAR
-  Widget reviewProgressBar({required title, required percent, required numberOfPeople}) {
-    return  Row(
+  Widget reviewProgressBar(
+      {required title, required percent, required numberOfPeople}) {
+    return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Expanded(
           flex: 2,
-          child: Text(title, style: const TextStyle(fontSize: 12.5),textAlign: TextAlign.end,),
+          child: Text(
+            title,
+            style: const TextStyle(
+              fontSize: 12.5,
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.end,
+          ),
         ),
         Expanded(
           flex: 5,
@@ -696,9 +729,8 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
             animation: true,
             lineHeight: 7.0,
             animationDuration: 1500,
-            percent: (percent/100),
-            backgroundColor:
-            const Color.fromARGB(255, 235, 235, 235),
+            percent: (percent / 100),
+            backgroundColor: const Color.fromARGB(255, 235, 235, 235),
             progressColor: const Color.fromARGB(255, 34, 198, 143),
             barRadius: const Radius.circular(25),
           ),
@@ -713,6 +745,180 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
       ],
     );
   }
+
   //endregion
 
+  //region WRITE-REVIEWS-COMPONENT
+  Widget writeReviewsComponent() {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(27.0, 15.0, 27.0, 15.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            margin: const EdgeInsets.only(bottom: 10.0),
+            child: Row(
+              children: const <Widget>[
+                Text(
+                  'Write Reviews',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 34, 198, 143),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Column(
+            children: <Widget>[
+              customTextField(height: 50.0, hintText: 'Title'),
+              const SizedBox(
+                height: 10.0,
+              ),
+              customTextField(height: 100.0, hintText: 'Write Content'),
+              const SizedBox(
+                height: 10.0,
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                    vertical: 15.0, horizontal: 10.0),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: const Color.fromARGB(255, 235, 235, 235),
+                  ),
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(10.0),
+                  ),
+                ),
+                child: Column(
+                  children: <Widget>[
+                    ratingBar(title: 'Service'),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    ratingBar(title: 'Organization'),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    ratingBar(title: 'Friendliness'),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    ratingBar(title: 'area Expert'),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    ratingBar(title: 'Safety'),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 5.0,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(15.0),
+                          ),
+                        ),
+                        side: const BorderSide(
+                          width: 1.5,
+                          color: Color.fromARGB(255, 34, 198, 143),
+                        ),
+                      ),
+                      onPressed: () {},
+                      child: const Text(
+                        "Leave a Review",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15.5,
+                          color: Color.fromARGB(255, 34, 198, 143),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  //endregion
+
+  //region CUSTOM-TEXT-FIELD
+  Widget customTextField({required height, required hintText}) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      height: height,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(
+          Radius.circular(10.0),
+        ),
+        color: Color.fromARGB(255, 245, 245, 245),
+      ),
+      child: TextField(
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          hintText: hintText,
+          hintStyle: const TextStyle(color: Colors.black),
+        ),
+        keyboardType: TextInputType.multiline,
+        maxLines: null,
+      ),
+    );
+  }
+
+  //endregion
+
+  //region RATING-BAR
+  Widget ratingBar({required title}) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Text(
+              title,
+              style:
+                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+            ),
+          ],
+        ),
+        RatingBar(
+          direction: Axis.horizontal,
+          glow: false,
+          allowHalfRating: true,
+          itemCount: 5,
+          initialRating: 4.0,
+          ratingWidget: RatingWidget(
+            empty: const Icon(
+              Icons.star_rounded,
+              color: Color.fromARGB(255, 224, 224, 224),
+            ),
+            half: const Icon(
+              Icons.star_half_rounded,
+              color: Color.fromARGB(255, 255, 203, 69),
+            ),
+            full: const Icon(
+              Icons.star_rounded,
+              color: Color.fromARGB(255, 255, 203, 69),
+            ),
+          ),
+          itemPadding: const EdgeInsets.symmetric(horizontal: 0.0),
+          onRatingUpdate: (rating) {
+            print(rating);
+          },
+        ),
+      ],
+    );
+  }
+//endregion
 }
