@@ -90,11 +90,6 @@ class _LoginScreenState extends State<LoginScreen> {
                               flex: 1,
                               child: Icon(Icons.keyboard_arrow_down_rounded,
                                   size: 22.0),
-                              /*Image(
-                                image: AssetImage('assets/icons/icon_expand_more.png'),
-                                height: 20,
-                                width: 20,
-                              ),*/
                             ),
                             SizedBox(width: 10),
                             Expanded(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gir_hotel_booking/checkout_screen.dart';
 import 'package:gir_hotel_booking/home_screen.dart';
 import 'package:gir_hotel_booking/hotel_details_screen.dart';
 import 'package:gir_hotel_booking/login_screen.dart';

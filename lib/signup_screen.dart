@@ -27,7 +27,7 @@ class _SignupScreenState extends State<SignupScreen> {
             backgroundColor: Colors.transparent,
             body: Container(
               margin: const EdgeInsets.fromLTRB(10, 150, 10, 150),
-              // padding: EdgeInsets.only(top:40,bottom: 40),
+              padding: EdgeInsets.only(top:10,bottom: 10),
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/signup_card_background.png'),

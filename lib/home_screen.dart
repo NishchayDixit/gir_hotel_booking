@@ -254,17 +254,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.all(20),
+                padding: EdgeInsets.fromLTRB(12, 18, 12, 15),
                 child: Column(
                   children: [
                     Row(
                       children: [
-                        Text(
-                          place,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black,
-                            fontSize: 18,
+                        Flexible(
+                          child: Text(
+                            place,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black,
+                              fontSize: 17,
+                            ),
                           ),
                         ),
                       ],
@@ -272,7 +274,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 2.0, 8.0, 0),
+                          padding: const EdgeInsets.fromLTRB(0, 2.0, 3.0, 0),
                           child: Icon(
                             Icons.location_on,
                             size: 14,
@@ -282,9 +284,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         Text(
                           location,
                           style: TextStyle(
-                            fontWeight: FontWeight.w600,
+                            fontWeight: FontWeight.w500,
                             color: Colors.black,
-                            fontSize: 12,
+                            fontSize: 11,
                           ),
                         ),
                         Expanded(child: Container()),
@@ -374,6 +376,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ),
+
         Container(
           child: GridView.count(
             shrinkWrap: true,
