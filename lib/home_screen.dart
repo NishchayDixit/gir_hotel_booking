@@ -78,110 +78,113 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
-                    color: Color.fromARGB(255, 245, 245, 245),
-                    blurRadius: 5,
-                    spreadRadius: 5,
+                    color: Color.fromARGB(255,241, 241, 241),
+                    blurRadius: 2,
+                    spreadRadius: 0.4,
                   ),
                 ],
                 borderRadius: const BorderRadius.all(
-                  Radius.circular(30),
+                  Radius.circular(50),
                 ),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      setState(() {
-                        page_no = 1;
-                      });
-                    },
-                    child: page_no == 1
-                        ? Tab(
-                            icon: Image.asset("assets/icons/icon_home_sel.png",
-                                height: 30),
-                            child: Text(
-                              "Home",
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 36, 198, 144),
+              child: Container(
+                padding: EdgeInsets.only(bottom: 4),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          page_no = 1;
+                        });
+                      },
+                      child: page_no == 1
+                          ? Tab(
+                              icon: Image.asset("assets/icons/icon_home_sel.png",
+                                  height: 30),
+                              child: Text(
+                                "Home",
+                                style: TextStyle(
+                                  color: Color.fromARGB(255, 36, 198, 144),
+                                ),
+                              ),
+                            )
+                          : Tab(
+                              icon: Image.asset("assets/icons/icon_home.png",
+                                  height: 20),
+                              child: Text(
+                                "Home",
+                                style: TextStyle(color: Colors.black),
                               ),
                             ),
-                          )
-                        : Tab(
-                            icon: Image.asset("assets/icons/icon_home.png",
-                                height: 20),
-                            child: Text(
-                              "Home",
-                              style: TextStyle(color: Colors.black),
-                            ),
-                          ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      setState(() {
-                        page_no = 2;
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => CheckoutScreen(),
-                            ));
-                      });
-                    },
-                    child: page_no == 2
-                        ? Tab(
-                            icon: Image.asset(
-                                "assets/icons/icon_laptop_sel.png",
-                                height: 30),
-                            child: Text(
-                              "Booking",
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 36, 198, 144),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          page_no = 2;
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CheckoutScreen(),
+                              ));
+                        });
+                      },
+                      child: page_no == 2
+                          ? Tab(
+                              icon: Image.asset(
+                                  "assets/icons/icon_laptop_sel.png",
+                                  height: 30),
+                              child: Text(
+                                "Booking",
+                                style: TextStyle(
+                                  color: Color.fromARGB(255, 36, 198, 144),
+                                ),
+                              ),
+                            )
+                          : Tab(
+                              icon: Image.asset("assets/icons/icon_laptop.png",
+                                  height: 20),
+                              child: Text(
+                                "Booking",
+                                style: TextStyle(color: Colors.black),
                               ),
                             ),
-                          )
-                        : Tab(
-                            icon: Image.asset("assets/icons/icon_laptop.png",
-                                height: 20),
-                            child: Text(
-                              "Booking",
-                              style: TextStyle(color: Colors.black),
-                            ),
-                          ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      setState(() {
-                        print('3');
-                        page_no = 3;
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SignupScreen(),
-                            ));
-                      });
-                    },
-                    child: page_no == 3
-                        ? Tab(
-                            icon: Image.asset(
-                                "assets/icons/icon_profile_sel.png",
-                                height: 30),
-                            child: Text(
-                              "Profile",
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 36, 198, 144),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          print('3');
+                          page_no = 3;
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SignupScreen(),
+                              ));
+                        });
+                      },
+                      child: page_no == 3
+                          ? Tab(
+                              icon: Image.asset(
+                                  "assets/icons/icon_profile_sel.png",
+                                  height: 30),
+                              child: Text(
+                                "Profile",
+                                style: TextStyle(
+                                  color: Color.fromARGB(255, 36, 198, 144),
+                                ),
+                              ),
+                            )
+                          : Tab(
+                              icon: Image.asset("assets/icons/icon_profile.png",
+                                  height: 20),
+                              child: Text(
+                                "Profile",
+                                style: TextStyle(color: Colors.black),
                               ),
                             ),
-                          )
-                        : Tab(
-                            icon: Image.asset("assets/icons/icon_profile.png",
-                                height: 20),
-                            child: Text(
-                              "Profile",
-                              style: TextStyle(color: Colors.black),
-                            ),
-                          ),
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

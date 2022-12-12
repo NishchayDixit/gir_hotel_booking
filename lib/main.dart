@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
           bottomNavigationBarTheme: BottomNavigationBarThemeData(
               backgroundColor: Colors.transparent)),
       // home: const HomeScreen(),
-      home:const LoginScreen(),
+      home:const CheckoutScreen(),
     );
   }
 }
