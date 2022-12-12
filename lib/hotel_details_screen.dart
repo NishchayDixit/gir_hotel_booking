@@ -31,38 +31,139 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
           child: SafeArea(
             child: Scaffold(
               backgroundColor: Colors.transparent,
-              body: SingleChildScrollView(
-                child: Column(
-                  children: <Widget>[
-                    Stack(
-                      children: <Widget>[
-                        ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                            bottomRight: Radius.circular(30.0),
-                            bottomLeft: Radius.circular(30.0),
-                          ),
-                          child: Image(
-                            image: AssetImage(widget.img_path),
-                            height: 500,
-                            width: double.infinity,
-                            fit: BoxFit.cover,
+              body: Stack(
+                children: [
+                  Column(
+                    children: [
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: <Widget>[
+                              Stack(
+                                children: <Widget>[
+                                  ClipRRect(
+                                    borderRadius: const BorderRadius.only(
+                                      bottomRight: Radius.circular(30.0),
+                                      bottomLeft: Radius.circular(30.0),
+                                    ),
+                                    child: Image(
+                                      image: AssetImage(widget.img_path),
+                                      height: 500,
+                                      width: double.infinity,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  customCard(),
+                                  customAppBar(),
+                                  customImagePanel(),
+                                ],
+                              ),
+                              hotelFacilityComponentDesign(),
+                              hotelPolicies(),
+                              reviewComponentDesign(),
+                              writeReviewsComponent(),
+                            ],
                           ),
                         ),
-                        customCard(),
-                        customAppBar(),
-                        customImagePanel(),
-                      ],
-                    ),
-                    hotelFacilityComponentDesign(),
-                    hotelPolicies(),
-                    reviewComponentDesign(),
-                    writeReviewsComponent(),
-                  ],
-                ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                          alignment: Alignment.bottomCenter,
+                          color: Colors.transparent,
+                          child: customNavigationBar())
+                    ],
+                  ),
+                ],
               ),
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget customNavigationBar() {
+    return Container(
+      margin: EdgeInsets.all(8),
+      padding: EdgeInsets.fromLTRB(25, 10, 25, 10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(25)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 3,
+            offset: Offset(0, 0),
+          )
+        ],
+      ),
+      child: Row(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '₹999',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text('Room Price')
+            ],
+          ),
+          Expanded(child: Container()),
+          OutlinedButton(
+            style: OutlinedButton.styleFrom(
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(15.0),
+                ),
+              ),
+              side: const BorderSide(
+                width: 1.5,
+                color: Color.fromARGB(255, 34, 198, 143),
+              ),
+            ),
+            onPressed: () {},
+            child: const Text(
+              "Pay at Hotel",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                color: Color.fromARGB(255, 34, 198, 143),
+              ),
+            ),
+          ),
+          SizedBox(width: 10),
+          OutlinedButton(
+            style: OutlinedButton.styleFrom(
+              backgroundColor: Color.fromARGB(255, 34, 198, 143),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(15.0),
+                ),
+              ),
+              side: const BorderSide(
+                width: 2,
+                color: Color.fromARGB(255, 34, 198, 143),
+              ),
+            ),
+            onPressed: () {},
+            child: const Text(
+              "Book Now",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -844,6 +945,9 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
                   ),
                 ],
               ),
+              SizedBox(
+                height: 100,
+              )
             ],
           ),
         ],
