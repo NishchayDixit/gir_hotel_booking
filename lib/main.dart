@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gir_hotel_booking/home_screen.dart';
+import 'package:gir_hotel_booking/login_screen.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
@@ -29,8 +30,8 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Poppins',
           bottomNavigationBarTheme: BottomNavigationBarThemeData(
               backgroundColor: Colors.transparent)),
-      home: const HomeScreen(),
-      // home: LoginScreen(),
+      // home: const HomeScreen(),
+      home: const LoginScreen(),
     );
   }
 }
